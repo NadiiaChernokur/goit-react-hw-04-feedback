@@ -1,4 +1,4 @@
-import { ContainerFilter } from './styles/filter.styles';
+import { ContainerFilter } from './Filter.styles';
 
 export const Filter = ({ filter, change }) => {
   return (

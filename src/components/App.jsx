@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ContactList } from './contactlist';
-import { Filter } from './filter';
-import { ContactForm } from './contactform';
+import { ContactList } from './Contactlist/Contactlist';
+import { Filter } from './Filter/Filter';
+import { ContactForm } from './Contactform/Contactform';
 import { nanoid } from 'nanoid';
-import { Container, Head, Head2 } from './styles/app.styles';
+import { Container, Head, Head2 } from './Appstyles/App.styles';
 
 export const App = () => {
   const [filter, setFilter] = useState('');
@@ -53,18 +53,6 @@ export const App = () => {
 
   const changeFilter = newArrey => {
     setFilter(newArrey);
-
-    const newArrayFilter = contacts.filter(item =>
-      item.name.toLowerCase().includes(filter.toLowerCase())
-    );
-
-    setContacts(newArrayFilter);
-
-    // setContacts(
-    //   contacts.filter(item =>
-    //     item.name.toLowerCase().includes(filter.toLowerCase())
-    //   )
-    // );
   };
 
   const deliteContact = id => {
@@ -72,7 +60,7 @@ export const App = () => {
   };
 
   const visibleArreyFilter = () => {
-    contacts.filter(item => {
+    return contacts.filter(item => {
       const visibleArrey = item.name
         .toLowerCase()
         .includes(filter.toLowerCase());
@@ -87,7 +75,7 @@ export const App = () => {
 
       <Head2>Contacts</Head2>
       <Filter filter={filter} change={changeFilter} />
-      <ContactList items={visibleArreyFilter} onDelite={deliteContact} />
+      <ContactList items={visibleArreyFilter()} onDelite={deliteContact} />
     </Container>
   );
 };

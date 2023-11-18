@@ -1,5 +1,5 @@
 import { Formik, Field } from 'formik';
-import { FormButton, FormContainer } from './styles/contactform.styles';
+import { FormButton, FormContainer } from './Contactform.styles';
 
 export const ContactForm = ({ submitButton }) => {
   return (

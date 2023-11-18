@@ -1,7 +1,4 @@
-import {
-  ContactlistButton,
-  ContactlistList,
-} from './styles/contactlist.styles';
+import { ContactlistButton, ContactlistList } from './Contactlist.styles';
 
 export const ContactList = ({ items, onDelite }) => {
   return (
