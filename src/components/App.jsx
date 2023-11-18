@@ -20,11 +20,6 @@ export const App = () => {
       localStorage.setItem('Contacts', JSON.stringify(contacts));
       return;
     }
-
-    const visibleArreyFilter = contacts.filter(item => {
-      item.name.toLowerCase().includes(filter.toLowerCase());
-      return setContacts(visibleArreyFilter);
-    });
   }, [contacts, filter, isOneRender]);
 
   useEffect(() => {
@@ -58,10 +53,31 @@ export const App = () => {
 
   const changeFilter = newArrey => {
     setFilter(newArrey);
+
+    const newArrayFilter = contacts.filter(item =>
+      item.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    setContacts(newArrayFilter);
+
+    // setContacts(
+    //   contacts.filter(item =>
+    //     item.name.toLowerCase().includes(filter.toLowerCase())
+    //   )
+    // );
   };
 
   const deliteContact = id => {
     setContacts(contacts.filter(item => item.id !== id));
+  };
+
+  const visibleArreyFilter = () => {
+    contacts.filter(item => {
+      const visibleArrey = item.name
+        .toLowerCase()
+        .includes(filter.toLowerCase());
+      return visibleArrey;
+    });
   };
 
   return (
@@ -71,7 +87,7 @@ export const App = () => {
 
       <Head2>Contacts</Head2>
       <Filter filter={filter} change={changeFilter} />
-      <ContactList items={contacts} onDelite={deliteContact} />
+      <ContactList items={visibleArreyFilter} onDelite={deliteContact} />
     </Container>
   );
 };
